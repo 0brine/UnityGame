@@ -24,7 +24,7 @@ public class Field : MonoBehaviour
 
                 if (j % 2 == i % 2)
                 {
-                    tile.transform.Translate(0, 0.00f, 0);
+                    tile.transform.Translate(0, 0.05f, 0);
                     renderer.material = lightGrass;
                 }
                 else

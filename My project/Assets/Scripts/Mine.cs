@@ -23,6 +23,8 @@ public class Mine : MonoBehaviour
         {
             PlayerStats.Money += moneyGeneration;
             countDown = interval;
+
+            Debug.Log(PlayerStats.Money);
         }
     }
 }

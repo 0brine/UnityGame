@@ -4,18 +4,34 @@ using UnityEngine;
 
 public class Solider : MonoBehaviour
 {
-    Rigidbody m_Rigidbody;
-    public float m_Thrust = 20f;
+    [SerializeField]
+    private Transform target;
+    [SerializeField]
+    private float speed = 1;
+
+
+    private Rigidbody rigidbody;
 
     void Start()
     {
-        //Fetch the Rigidbody from the GameObject with this script attached
-        m_Rigidbody = GetComponent<Rigidbody>();
+        rigidbody = GetComponent<Rigidbody>();
+        //rigidbody.velocity = Vector3.forward * 1;
     }
 
     void FixedUpdate()
     {
-        //Apply a force to this Rigidbody in direction of this GameObjects up axis
-        m_Rigidbody.AddForce(0, 0, 5);
+        Vector3 toTarget = target.position - transform.position;
+        toTarget.y = 0;
+
+
+        if (toTarget.magnitude < 0.1)
+        {
+            toTarget = Vector3.zero;
+        }
+
+        Vector3 movement = toTarget.normalized * speed;
+        movement.y = rigidbody.velocity.y;
+
+        rigidbody.velocity = movement;
     }
 }

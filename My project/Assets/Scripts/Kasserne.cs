@@ -5,8 +5,10 @@ using UnityEngine;
 public class Kasserne : MonoBehaviour
 {
     public GameObject Unit;
+    public Transform SpawnPoint;
     public const float interval = 5;
     public float speed;
+
     private float countDown;
 
     // Start is called before the first frame update
@@ -21,7 +23,7 @@ public class Kasserne : MonoBehaviour
         countDown -= Time.deltaTime * speed;
         while (countDown < 0)
         {
-            Instantiate(Unit, transform.position + new Vector3(0, 1, 0), Quaternion.identity);
+            Instantiate(Unit, SpawnPoint.position, Quaternion.identity);
             countDown = interval;
         }
     }
