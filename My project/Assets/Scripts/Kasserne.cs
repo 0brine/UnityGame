@@ -18,13 +18,13 @@ public class Kasserne : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         countDown -= Time.deltaTime * speed;
         while (countDown < 0)
         {
             Instantiate(Unit, SpawnPoint.position, Quaternion.identity);
-            countDown = interval;
+            countDown += interval;
         }
     }
 }
